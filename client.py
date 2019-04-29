@@ -7,8 +7,7 @@ import json
 def run():
     import ont_pb2
     import ont_pb2_grpc
-    with grpc.insecure_channel('192.168.3.170:9090') as channel:
-    # with grpc.insecure_channel('127.0.0.1:9090') as channel:
+    with grpc.insecure_channel('127.0.0.1:9090') as channel:
         client = ont_pb2_grpc.ONTServiceStub(channel)
 
         work_data = {
