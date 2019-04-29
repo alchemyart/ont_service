@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package ont;
+
+message RequestData {
+    string data = 1;
+}
+
+message ResponseData {
+    int64 return_code = 1;
+    string message = 2;
+    string data = 3;
+}
+
+service ONTService {
+
+    rpc CreateONTID(RequestData) returns (ResponseData) {}
+    rpc DeleteONTID(RequestData) returns (ResponseData) {}
+    rpc TransferONTID(RequestData) returns (ResponseData) {}
+    rpc GetCreateNotify(RequestData) returns (ResponseData) {}
+
+}
