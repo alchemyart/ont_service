@@ -11,11 +11,11 @@ GAS_PRICE = 500
 
 IDENTITY_LABEL = 'Label'
 
-MYSQL_CONN_STR = 'mysql://root:password@127.0.0.1:3306/ggac?charset=utf8'
+MYSQL_CONN_STR = 'mysql://root:password@mysql:3306/ggac?charset=utf8'
 
 TIME_ZONE = 'Asia/Shanghai'
 
-DEFAULT_REDIS_HOST = '127.0.0.1'
+DEFAULT_REDIS_HOST = 'redis'
 DEFAULT_REDIS_PASSWORD = 'password'
 DEFAULT_REDIS_PORT = 6389
 DEFAULT_REDIS_DB = '12'
