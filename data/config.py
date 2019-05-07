@@ -3,8 +3,11 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ONT_ID_REGISTERED = True
+
 WALLET_PATH = './data/wallet.json'
 WALLET_PASSOWRD = 'password'
+
+ONT_API_URL = 'http://40.73.69.106:7088'
 
 GAS_LIMIT = 20000
 GAS_PRICE = 500

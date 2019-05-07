@@ -24,13 +24,13 @@ class ONTServiceStub(object):
         request_serializer=ont__pb2.RequestData.SerializeToString,
         response_deserializer=ont__pb2.ResponseData.FromString,
         )
-    self.TransferONTID = channel.unary_unary(
-        '/ont.ONTService/TransferONTID',
+    self.ContractONTIDRegister = channel.unary_unary(
+        '/ont.ONTService/ContractONTIDRegister',
         request_serializer=ont__pb2.RequestData.SerializeToString,
         response_deserializer=ont__pb2.ResponseData.FromString,
         )
-    self.GetCreateNotify = channel.unary_unary(
-        '/ont.ONTService/GetCreateNotify',
+    self.ContractPutBatch = channel.unary_unary(
+        '/ont.ONTService/ContractPutBatch',
         request_serializer=ont__pb2.RequestData.SerializeToString,
         response_deserializer=ont__pb2.ResponseData.FromString,
         )
@@ -54,16 +54,16 @@ class ONTServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def TransferONTID(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+  def ContractONTIDRegister(self, request, context):
+    """/api/v1/contract/ontid/register
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def GetCreateNotify(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+  def ContractPutBatch(self, request, context):
+    """/api/v1/contract/put/batch
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -81,13 +81,13 @@ def add_ONTServiceServicer_to_server(servicer, server):
           request_deserializer=ont__pb2.RequestData.FromString,
           response_serializer=ont__pb2.ResponseData.SerializeToString,
       ),
-      'TransferONTID': grpc.unary_unary_rpc_method_handler(
-          servicer.TransferONTID,
+      'ContractONTIDRegister': grpc.unary_unary_rpc_method_handler(
+          servicer.ContractONTIDRegister,
           request_deserializer=ont__pb2.RequestData.FromString,
           response_serializer=ont__pb2.ResponseData.SerializeToString,
       ),
-      'GetCreateNotify': grpc.unary_unary_rpc_method_handler(
-          servicer.GetCreateNotify,
+      'ContractPutBatch': grpc.unary_unary_rpc_method_handler(
+          servicer.ContractPutBatch,
           request_deserializer=ont__pb2.RequestData.FromString,
           response_serializer=ont__pb2.ResponseData.SerializeToString,
       ),

@@ -10,6 +10,9 @@ import ont_pb2_grpc
 from managers import ONTManager
 from tasks import get_create_notify, get_delete_notify, reg_new_ont_id
 from models import set_work_ont_id_and_tx_hash
+from data import config
+import requests
+
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
@@ -85,38 +88,60 @@ class ONTService(ont_pb2_grpc.ONTServiceServicer):
 
         return response
 
-    def TransferONTID(self, request, context):
+    def ContractONTIDRegister(self, request, context):
 
-        print("C_2_S TransferONTID: >>>>> ", request)
+        print("C_2_S ContractOntidRegister: >>>>> ", request)
 
-        response = ont_pb2.ResponseData(
-            return_code=0,
-            message="success",
-            data=""
-        )
+        request_data = json.loads(request.data)
 
-        print("S_2_C TransferONTID: <<<<< ", response)
+        result = requests.post(config.ONT_API_URL + '/api/v1/contract/ontid/register', json={
+                'phone_cn': str('86*') + str(request_data['mobile']),
+                'password': str(request_data['password']),
+            })
+        print(result.status_code, result.json())
+
+        if result.status_code == 200:
+            response = ont_pb2.ResponseData(
+                return_code=0,
+                message="success",
+                data=result.json()
+            )
+        else:
+            response = ont_pb2.ResponseData(
+                return_code=-1,
+                message="failed",
+                data=result.status_code
+            )
+
+        print("S_2_C ContractOntidRegister: <<<<< ", response)
 
         return response
 
-    def GetCreateNotify(self, request, context):
+    def ContractPutBatch(self, request, context):
 
-        print("C_2_S GetNotifyListByTXHash: >>>>> ", request)
+        print("C_2_S ContractPutBatch: >>>>> ", request)
 
-        work_data = json.loads(request.data)
-        work_id = work_data['work_id']
-        tx_hash = work_data['tx_hash']
-        new_ont_id = work_data['new_ont_id']
+        request_data = json.loads(request.data)
 
-        get_create_notify.delay(work_id=work_id, tx_hash=tx_hash, ont_id=new_ont_id)
+        print(request_data)
 
-        response = ont_pb2.ResponseData(
-            return_code=0,
-            message="success",
-            data=""
-        )
+        result = requests.post(config.ONT_API_URL + '/api/v1/contract/put/batch', json=request_data)
+        print(result.status_code, result.json())
 
-        print("S_2_C GetNotifyListByTXHash: <<<<< ", response)
+        if result.status_code == 200:
+            response = ont_pb2.ResponseData(
+                return_code=0,
+                message="success",
+                data=result.json()
+            )
+        else:
+            response = ont_pb2.ResponseData(
+                return_code=-1,
+                message="failed",
+                data=result.status_code
+            )
+
+        print("S_2_C ContractPutBatch: <<<<< ", response)
 
         return response
 

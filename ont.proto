@@ -16,7 +16,9 @@ service ONTService {
 
     rpc CreateONTID(RequestData) returns (ResponseData) {}
     rpc DeleteONTID(RequestData) returns (ResponseData) {}
-    rpc TransferONTID(RequestData) returns (ResponseData) {}
-    rpc GetCreateNotify(RequestData) returns (ResponseData) {}
+    // /api/v1/contract/ontid/register
+    rpc ContractONTIDRegister(RequestData) returns (ResponseData) {}
+    // /api/v1/contract/put/batch
+    rpc ContractPutBatch(RequestData) returns (ResponseData) {}
 
 }

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='ont',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\tont.proto\x12\x03ont\"\x1b\n\x0bRequestData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"B\n\x0cResponseData\x12\x13\n\x0breturn_code\x18\x01 \x01(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t2\xea\x01\n\nONTService\x12\x34\n\x0b\x43reateONTID\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x12\x34\n\x0b\x44\x65leteONTID\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x12\x36\n\rTransferONTID\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x12\x38\n\x0fGetCreateNotify\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\tont.proto\x12\x03ont\"\x1b\n\x0bRequestData\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\t\"B\n\x0cResponseData\x12\x13\n\x0breturn_code\x18\x01 \x01(\x03\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t2\xf3\x01\n\nONTService\x12\x34\n\x0b\x43reateONTID\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x12\x34\n\x0b\x44\x65leteONTID\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x12>\n\x15\x43ontractONTIDRegister\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x12\x39\n\x10\x43ontractPutBatch\x12\x10.ont.RequestData\x1a\x11.ont.ResponseData\"\x00\x62\x06proto3')
 )
 
 
@@ -127,7 +127,7 @@ _ONTSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   serialized_start=116,
-  serialized_end=350,
+  serialized_end=359,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateONTID',
@@ -148,8 +148,8 @@ _ONTSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='TransferONTID',
-    full_name='ont.ONTService.TransferONTID',
+    name='ContractONTIDRegister',
+    full_name='ont.ONTService.ContractONTIDRegister',
     index=2,
     containing_service=None,
     input_type=_REQUESTDATA,
@@ -157,8 +157,8 @@ _ONTSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='GetCreateNotify',
-    full_name='ont.ONTService.GetCreateNotify',
+    name='ContractPutBatch',
+    full_name='ont.ONTService.ContractPutBatch',
     index=3,
     containing_service=None,
     input_type=_REQUESTDATA,
